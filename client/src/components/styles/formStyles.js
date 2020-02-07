@@ -61,6 +61,14 @@ const styles = theme => ({
     hiddenInput: {
         display: "none"
     },
+    fieldDescription: {
+        display: "flex",
+        marginLeft: theme.spacing(2),
+        "& span": {
+            marginLeft: theme.spacing(),
+            fontWeight: 900
+        }
+    }
 });
 
 export default styles;

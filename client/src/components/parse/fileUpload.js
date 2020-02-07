@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import { FormGroup, Typography, Button, Paper, Input } from "@material-ui/core";
+import { FormGroup, Typography, Button } from "@material-ui/core";
 import axios from "axios";
 
 import styles from "../styles/formStyles";
@@ -49,17 +49,17 @@ class fileUpload extends Component {
                 <Typography variant="subtitle1" className={classes.formHeader}>
                     Upload CSV
                 </Typography>
-                <Paper>
-                    <FormGroup>
+            
+                    <FormGroup row className={classes.formRow}>
                         <input
                             accept=".csv"
                             className={classes.hiddenInput}
-                            id="enrollment-file-input"
+                            id="file-input"
                             multiple
                             type="file"
                             onChange={this.handleUploadFile}
                         />
-                        <label htmlFor="enrollment-file-input">
+                        <label htmlFor="file-input">
                             <Button
                                 variant="contained"
                                 color="primary"
@@ -72,13 +72,14 @@ class fileUpload extends Component {
                         <Typography
                             variant="subtitle1"
                             gutterBottom={false}
+                            className={classes.fieldDescription}
                         >
                             File Name:{" "}
                             <span>
                                 {this.state.file && this.state.file.name}
                             </span>
                         </Typography>
-                        <FormGroup>
+                        <FormGroup row className={classes.formRow}>
                             <Button
                                 type="submit"
                                 color="primary"
@@ -89,9 +90,9 @@ class fileUpload extends Component {
                             </Button>
                         </FormGroup>
                     </FormGroup>
-                </Paper>
+                
                 {this.state.fileResponse ? (
-                    <Paper>
+                
                         <FormGroup>
                             <Typography>
                                 Total Records:{" "}
@@ -101,8 +102,7 @@ class fileUpload extends Component {
                                 </span>
                             </Typography>
                         </FormGroup>
-                    </Paper>
-                ) : null}
+                ) : <h6>loading...</h6>}
             </form>
         );
     }
