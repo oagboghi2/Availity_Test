@@ -24,45 +24,33 @@ class fileUpload extends Component {
         // First Parse the File into String
         if (this.state.file) {
             const reader = new FileReader();
-            reader.onload = evt => {
-                const fileString = evt.target.result;
+            reader.onload = event => {
+                const fileString = event.target.result;
                 // console.log("FILE AS STRING", fileString);
                 const postObj = { fileString, fileName: this.state.file.name };
-                this.postFileToServer("api/parse/", postObj);
-            };
-            reader.readAsText(this.state.file);
+                axios
+                    .post("api/parse/", postObj)
+                    .then(({ data }) => {
+                        console.log(
+                            "DATA RECEIVED FROM SUBMITTING ENROLLMENT FILE",
+                            data
+                        );
+                        this.setState({ fileResponse: data });
+                    })
+                };
+                reader.readAsText(this.state.file);
+            };   
         }
-    };
-
-    postFileToServer = (url, content) => {
-        axios
-            .post(url, content)
-            .then(({ data }) => {
-                console.log(
-                    "DATA RECEIVED FROM SUBMITTING ENROLLMENT FILE",
-                    data
-                );
-                this.setState({ fileResponse: data });
-            })
-            .catch(err => {
-                console.error(
-                    "FAILURE SUBMITTING ENROLLMENT FILE",
-                    err.message,
-                    err
-                );
-            });
-    };
-
+        
     render() {
         const { classes } = this.props;
         return (
-            <form onSubmit={this.handleSubmit} className={classes.root}>
-                
+            <form onSubmit={this.handleSubmit} className={classes.container}>
                 <Typography variant="subtitle1" className={classes.formHeader}>
                     Upload CSV
                 </Typography>
-                <Paper className={classes.formContentPaper}>
-                    <FormGroup row className={classes.formRow}>
+                <Paper>
+                    <FormGroup>
                         <input
                             accept=".csv"
                             className={classes.hiddenInput}
@@ -84,14 +72,13 @@ class fileUpload extends Component {
                         <Typography
                             variant="subtitle1"
                             gutterBottom={false}
-                            className={classes.fieldDescription}
                         >
                             File Name:{" "}
                             <span>
                                 {this.state.file && this.state.file.name}
                             </span>
                         </Typography>
-                        <FormGroup row className={classes.formRow}>
+                        <FormGroup>
                             <Button
                                 type="submit"
                                 color="primary"
@@ -104,50 +91,13 @@ class fileUpload extends Component {
                     </FormGroup>
                 </Paper>
                 {this.state.fileResponse ? (
-                    <Paper className={classes.formContentPaper}>
-                        <FormGroup row className={classes.formRowLeft}>
-                            <Typography
-                                variant="subtitle1"
-                                className={classes.formHeaderLeft}
-                            >
-                                Headers Found:{" "}
-                                <span>
-                                    {this.state.fileResponse.headersFound &&
-                                        this.state.fileResponse.headersFound.join(
-                                            " | "
-                                        )}
-                                </span>
-                            </Typography>
-                            <FormGroup
-                                row
-                                className={classes.formRowLeft}
-                            ></FormGroup>
-                            <Typography
-                                variant="subtitle1"
-                                className={classes.formHeaderLeft}
-                            >
-                                Total Records Processed:{" "}
+                    <Paper>
+                        <FormGroup>
+                            <Typography>
+                                Total Records:{" "}
                                 <span>
                                     {this.state.fileResponse
-                                        .totalRecordsProcessed &&
-                                        this.state.fileResponse
-                                            .totalRecordsProcessed}
-                                </span>
-                            </Typography>
-                            <FormGroup
-                                row
-                                className={classes.formRowLeft}
-                            ></FormGroup>
-                            <Typography
-                                variant="subtitle1"
-                                className={classes.formHeaderLeft}
-                            >
-                                Duplicate Records Found:{" "}
-                                <span>
-                                    {this.state.fileResponse
-                                        .totalDuplicateRecords &&
-                                        this.state.fileResponse
-                                            .totalDuplicateRecords}
+                                        .totalRecordsProcessed }
                                 </span>
                             </Typography>
                         </FormGroup>

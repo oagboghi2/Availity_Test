@@ -56,12 +56,3 @@ function balancedParenthesis(str){
    }
 
 
-## For frontend engineer: Healthcare providers request to be part of the Availity system.  Using React framework, create a registration user interface so healthcare providers can electronically join Availity.  The following data points should be collected
-
- enter the client directory and run "npm start" to open a production version of this exercise. I focused on building a simple UI that returned a objecct with all requested data using axios
-
- ## Coding exercise:  Availity receives enrollment files from various benefits management and enrollment solutions (I.e. HR platforms, payroll platforms).  Most of these files are typically in EDI format.  However, there are some files in CSV format.  For the files in CSV format, write a program that will read the content of the file and separate enrollees by insurance company in its own file. Additionally, sort the contents of each file by last and first name (ascending).  Lastly, if there are duplicate User Ids for the same Insurance Company, then only the record with the highest version should be included. The following data points are included in the file:
-
-I was a built confused with this excersize, so I built two different versions. One uses node.js in the terminal to return a log of the csv files requested.
-
-The 2nd version operates alongside the react excersize. run npm run dev in the root folder and  npm run build to create the frontend. Under localhost:8080 you will see a live version. You can click on the CSV parse button or enter "/parse" in the url to visit the csv page, which allows you to select a CSV file you want to parse.

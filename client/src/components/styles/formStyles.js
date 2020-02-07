@@ -33,19 +33,6 @@ const styles = theme => ({
         },
         textAlign: "center"
     },
-    formHeaderLeft: {
-        marginTop: theme.spacing(2),
-        [theme.breakpoints.down("sm")]: {
-            minWidth: 0,
-            marginLeft: 0,
-            width: "100%"
-        },
-        [theme.breakpoints.up("md")]: {
-            minWidth: `calc(400px - 16px)`,
-            marginLeft: theme.spacing(2)
-        },
-        textAlign: "left"
-    },
     formField: {
         marginTop: theme.spacing(2),
         marginLeft: 0,
@@ -74,14 +61,6 @@ const styles = theme => ({
     hiddenInput: {
         display: "none"
     },
-    fieldDescription: {
-        display: "flex",
-        marginLeft: theme.spacing(2),
-        "& span": {
-            marginLeft: theme.spacing(),
-            fontWeight: 900
-        }
-    }
 });
 
 export default styles;
