@@ -1,12 +1,7 @@
 const fs = require('fs');
 const csv = require('csv-parser');
 
-
-
 let results = [];
-let patients = [] 
-
-
 
 // initializes the fs.ReadStream object
 const HospitalData = function(){
@@ -20,7 +15,6 @@ const HospitalData = function(){
     // at the end, we can 
     .on('end', () => {
        //console.log(results)
- 
       const bar = results.filter((result) => result.InsuranceCompany = process.argv.slice(2).join(' '));
       //const bar = results.map( res => res )
       //sort by first name
