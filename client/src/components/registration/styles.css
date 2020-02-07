@@ -14,8 +14,28 @@
     }
 
     .formField {
+        padding-top: 100px;
         margin-top: 16px;
-        margin-left: 0;
+        margin-left: 100px;
         width: 37.3%;
         
+    }
+
+    .formGroup2 {
+        display: flex;
+        align-items: center;
+        align-content: space-around;
+        justify-content: space-evenly;
+        flex-direction: row;
+    }
+
+    .submitButton {
+        align-content: space-around;
+
+        margin-left: 16px;
+        margin-top: 16px;
+        width: 66.3%;
+        max-width: calc(300px - 16px);
+        flex-direction: row;
+
     }

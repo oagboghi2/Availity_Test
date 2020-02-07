@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 import "./styles.css";
-import styles from "../styles/formStyles.js.js";
+import styles from "../styles/formStyles.js";
 
 class Registration extends Component {
     state = {
@@ -23,7 +23,8 @@ class Registration extends Component {
         state: "",
         zip: "",
         phone: "",
-        email: ""
+        email: "",
+        value: 0,
     };
 
     componentDidMount(){}
@@ -65,6 +66,12 @@ class Registration extends Component {
     console.log("Submitting", dataObj)
          }
 
+        navigate = route => e => {
+        if (route === "/") this.setState({ value: 0 });
+        else this.setState({ value: 1 });
+        this.props.history.push(route);
+    };
+
     render(){
         const {classes} = this.props;
         return (
@@ -75,21 +82,21 @@ class Registration extends Component {
                     </Typography>
                     <Paper >
                         <FormGroup className={"formRow"}>
-                            <TextField className={"formField"}
+                            <TextField className={classes.formField}
                             required
                             type="text"
                             variant="outlined"
                             label="First Name"
                             onChange={this.handleChange("firstName")}
                             />
-                            <TextField className={"formField"}
+                            <TextField className={classes.formField}
                             required
                             type="text"
                             variant="outlined"
                             label="Last Name"
                             onChange={this.handleChange("lastName")}
                             />
-                            <TextField className={"formField"}
+                            <TextField className={classes.formField}
                             required
                             type="text"
                             variant="outlined"
@@ -97,49 +104,49 @@ class Registration extends Component {
                             helperText="As it appears on your NPI registration"
                             onChange={this.handleChange("npi")}
                             />
-                            <TextField className={"formField"}
+                            <TextField className={classes.formField}
                             required
                             type="text"
                             variant="outlined"
                             label="Address Line 1"
                             onChange={this.handleChange("address1")}
                             />
-                            <TextField className={"formField"}
+                            <TextField className={classes.formField}
                             required
                             type="text"
                             variant="outlined"
                             label="Address Line 2"
                             onChange={this.handleChange("address2")}
                             />
-                            <TextField className={"formField"}
+                            <TextField className={classes.formField}
                             required
                             type="text"
                             variant="outlined"
                             label="City"
                             onChange={this.handleChange("city")}
                             />
-                            <TextField className={"formField"}
+                            <TextField className={classes.formField}
                             required
                             type="text"
                             variant="outlined"
                             label="State"
                             onChange={this.handleChange("state")}
                             />
-                            <TextField className={"formField"}
+                            <TextField className={classes.formField}
                             required
                             type="text"
                             variant="outlined"
                             label="Zip Code"
                             onChange={this.handleChange("zip")}
                             />
-                            <TextField className={"formField"}
+                            <TextField className={classes.formField}
                             required
                             type="tel"
                             variant="outlined"
                             label="Phone Number"
                             onChange={this.handleChange("phone")}
                             />
-                            <TextField className={"formField"}
+                            <TextField className={classes.formField}
                             required
                             type="email"
                             variant="outlined"
@@ -148,7 +155,7 @@ class Registration extends Component {
                             />
                         </FormGroup>
 
-                        <FormGroup >
+                        <FormGroup className={"formGroup2"}>
                             <Button
                                 type="submit"
                                 color="primary"
@@ -156,6 +163,16 @@ class Registration extends Component {
                                 className={classes.submitButton}
                             >
                                 Submit
+                            </Button>
+                            <Button
+                                type="submit"
+                                color=""
+                                variant="contained"
+                                className={classes.submitButton}
+                                onClick={this.navigate("/parse")}
+
+                            >
+                                parse CSV data
                             </Button>
                         </FormGroup>
                     </Paper>

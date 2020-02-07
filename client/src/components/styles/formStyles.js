@@ -2,7 +2,7 @@ const styles = theme => ({
     container: {
         display: "flex",
         flexDirection: "column",
-        height: `calc(100vh - 64px - ${theme.spacing(6)}px)`,
+        height: `calc(100vh - 64px - 16px)`,
         width: "100%",
         overflowY: "auto",
         overflowX: "hidden",
@@ -28,7 +28,7 @@ const styles = theme => ({
             width: "100%"
         },
         [theme.breakpoints.up("md")]: {
-            minWidth: `calc(400px - ${theme.spacing(4)}px)`,
+            minWidth: `calc(400px - 16px)`,
             marginLeft: theme.spacing(2)
         },
         textAlign: "center"
@@ -41,7 +41,7 @@ const styles = theme => ({
             width: "100%"
         },
         [theme.breakpoints.up("md")]: {
-            minWidth: `calc(400px - ${theme.spacing(4)}px)`,
+            minWidth: `calc(400px - 16px)`,
             marginLeft: theme.spacing(2)
         },
         textAlign: "left"
@@ -55,7 +55,7 @@ const styles = theme => ({
             width: "100%"
         },
         [theme.breakpoints.up("md")]: {
-            width: `calc(400px - ${theme.spacing(4)}px)`,
+            width: `calc(400px - 16px)`,
             marginLeft: theme.spacing(2)
         }
     },
@@ -69,7 +69,7 @@ const styles = theme => ({
     submitButton: {
         marginLeft: theme.spacing(2),
         marginTop: theme.spacing(2),
-        minWidth: `calc(400px - ${theme.spacing(4)}px)`
+        minWidth: `calc(400px - 16px)`
     },
     hiddenInput: {
         display: "none"
